@@ -1,0 +1,65 @@
+
+<div id="tl_buttons">
+    <a href="<?= $this->href ?>" class="header_back" title="<?= $this->title ?>"><?= $this->button ?></a>
+</div>
+
+<div id="tl_maintenance_cache" class="maintenance_<?= $this->isActive ? 'active' : 'inactive' ?>">
+
+    <?php if ($this->message): ?>
+        <div class="tl_message">
+            <?= $this->message ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($this->installedModules): ?>
+        <div class="tl_box">
+            <div class="widget long">
+                <?php echo $this->installedModules; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($this->showForm): ?>
+        <form action="<?= $this->action ?>" class="tl_form" method="post">
+            <div class="tl_formbody_edit">
+                <input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formSubmit; ?>">
+                <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+                <fieldset class="tl_tbox nolegend">
+                    <div class="w50">
+                        <h3>
+                            <label for="theme_name">Theme-Name</label>
+                        </h3>
+                        <input type="text" name="theme_name" id="theme_name" class="tl_text">
+                        <p class="tl_help tl_tip"><?php echo $this->themeNameHelp; ?></p>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="tl_submit_container">
+                <button type="submit" name="clear" class="tl_submit">
+                    Slashworks Contao Starter Paket installieren
+                </button>
+            </div>
+        </form>
+    <?php endif; ?>
+
+    <?php if ($this->showDone): ?>
+        <h2 class="sub_headline">Installation bereits durchgeführt</h2>
+        <div class="tl_box">
+            <div class="widget long">
+                <p>
+                    Die Installation wurde bereits durchgeführt. Eine erneute Installation sollte nur dann durchgeführt werden, wenn noch keine Daten in der Datenbank sowie im Dateisystem angelegt oder geändert wurden (ausgenommen davon sind die durch die Starter-Installation selbst erstellten Daten).
+                </p>
+                <p>
+                    Um die Installation erneut durchzuführen, muss der Eintrag <code>$GLOBALS['TL_CONFIG']['contaoStarterInstallation']</code> aus <em>system/config/localconfig.php</em> entfernt werden.
+                </p>
+            </div>
+        </div>
+
+        <div class="tl_message">
+            <p class="tl_error">
+                Wenn die Installation erneut durchgeführt wird, können Daten in den betroffenen DB-Tabellen und Datei-Verzeichnissen verloren gehen oder überschrieben werden.
+            </p>
+        </div>
+    <?php endif; ?>
+
+</div>

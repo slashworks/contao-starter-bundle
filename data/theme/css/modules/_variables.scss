@@ -1,0 +1,69 @@
+
+/* ==========================================================================
+   Fonts
+========================================================================== */
+
+
+/* ==========================================================================
+   Colors
+========================================================================== */
+
+$color-primary: #00bed7;
+
+
+
+/* ==========================================================================
+   Grid settings
+========================================================================== */
+
+$grid-gutter: 30px;
+$grid-width: 1440px;
+
+
+
+/* Miscellaneous
+========================================================================== */
+
+$animation-duration: .2s;
+$border-radius: 0;
+
+
+
+/* ==========================================================================
+   Helper
+========================================================================== */
+
+@mixin font-smoothing($value: antialiased) {
+    @if $value == antialiased {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    @else {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
+}
+
+@mixin object-fit($fit: cover, $position: center center) {
+    object-fit: $fit;
+    object-position: $position;
+
+    font-family: 'object-fit: #{$fit}; object-position: #{$position};';
+}
+
+.invisible {
+    clip: rect(0 0 0 0);
+    height: 1px !important;
+    margin: -1px;
+    order: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px !important;
+}
+
+.clearfix {
+    clear: both;
+    content: "";
+    display: table;
+}

@@ -1,0 +1,15 @@
+
+.button {
+    background: $color-primary;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: 1px;
+    padding: 18px 30px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+}

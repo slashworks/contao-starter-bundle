@@ -1,0 +1,9 @@
+
+<h2>Auf <?php echo $this->website; ?> wurden folgende Nutzerkonten angelegt:</h2>
+
+<?php foreach ($this->users as $user): ?>
+<p>
+    Benutzername: <?php echo $user['username']; ?> <br>
+    Passwort: <?php echo $user['password']; ?>
+</p>
+<?php endforeach; ?>
