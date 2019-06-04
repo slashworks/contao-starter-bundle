@@ -34,7 +34,7 @@ class ContaoStarterInstall extends BackendModule
     protected $installationDone = false;
 
     /** @var bool */
-    protected $debug = true;
+    protected $debug = false;
 
     /** @var Folder */
     protected $themeFolder;
