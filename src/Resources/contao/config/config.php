@@ -1,11 +1,14 @@
 <?php
 
+use Slashworks\ContaoStarterBundle\Backend\ContaoStarterInstall;
+use Slashworks\ContaoStarterBundle\Hook\LoadFormField;
+
 /**
  * Back end modules
  */
 $GLOBALS['BE_MOD']['system']['contaostarter'] = array
 (
-    'callback' => Slashworks\ContaoStarterBundle\Backend\ContaoStarterInstall::class,
+    'callback' => ContaoStarterInstall::class,
 );
 
 array_insert($GLOBALS['BE_MOD']['content'], 1, array
@@ -17,3 +20,9 @@ array_insert($GLOBALS['BE_MOD']['content'], 1, array
         'list'        => array('ListWizard', 'importList')
     )
 ));
+
+
+/**
+ * Hooks
+ */
+$GLOBALS['TL_HOOKS']['loadFormField'][] = array(LoadFormField::class, 'addWidgetNames');
