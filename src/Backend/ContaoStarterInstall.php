@@ -110,6 +110,8 @@ class ContaoStarterInstall extends BackendModule
 
         $this->Template->message = Message::generateUnwrapped(__CLASS__);
         $this->Template->installedModules = Message::generate('installed_modules');
+        $this->Template->userData = Message::generate('user_data');
+
         $this->Template->showForm = !Config::has('contaoStarterInstallation');
         $this->Template->showDone = Config::has('contaoStarterInstallation');
     }
@@ -144,7 +146,9 @@ class ContaoStarterInstall extends BackendModule
 
         $this->createMessages();
 
-        $this->done();
+        if (!$this->debug) {
+            $this->done();
+        }
 
         $this->reload();
     }
@@ -161,6 +165,10 @@ class ContaoStarterInstall extends BackendModule
         $installedModulesMessage = new FrontendTemplate('partial_installed_modules');
         $installedModulesMessage->modules = $this->installedModules;
         Message::add($installedModulesMessage->parse(), 'TL_RAW', 'installed_modules');
+
+        $userDataMessage = new FrontendTemplate('partial_user_data');
+        $userDataMessage->users = $this->userData;
+        Message::add($userDataMessage->parse(), 'TL_RAW', 'user_data');
     }
 
     /**

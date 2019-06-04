@@ -11,6 +11,14 @@
         </div>
     <?php endif; ?>
 
+    <?php if ($this->userData): ?>
+        <div class="tl_box">
+            <div class="widget long">
+                <?php echo $this->userData; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <?php if ($this->installedModules): ?>
         <div class="tl_box">
             <div class="widget long">
