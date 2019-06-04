@@ -504,6 +504,7 @@ class ContaoStarterInstall extends BackendModule
         Config::persist('websiteTitle', $this->themeName);
         Config::persist('dateFormat', 'd.m.Y');
         Config::persist('datimFormat', 'd.m.Y H:i');
+        Config::persist('timeZone', 'Europe/Berlin');
         Config::persist('gdMaxImgWidth', 5000);
         Config::persist('gdMaxImgHeight', 5000);
         Config::persist('maxFileSize', 20480000);
