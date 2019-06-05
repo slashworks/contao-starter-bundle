@@ -137,17 +137,18 @@ class ContaoStarterInstall extends BackendModule
             $this->cleanUp();
         }
 
-        $this->createFiles();
-        $this->createTheme();
-        $this->createLayout();
-        $this->createPages();
-        $this->createUsers();
-        $this->modifyLocalconfig();
+//        $this->createFiles();
+//        $this->createTheme();
+//        $this->createLayout();
+//        $this->createPages();
+//        $this->createUsers();
+//        $this->modifyLocalconfig();
+        $this->createAppBundle();
 
         $this->createMessages();
 
         if (!$this->debug) {
-            $this->done();
+//            $this->done();
         }
 
         $this->reload();
@@ -267,6 +268,34 @@ class ContaoStarterInstall extends BackendModule
             $filePath = $this->themeFolder->path . '/' . $file->getRelativePathname();
             Dbafs::addResource($filePath);
         }
+    }
+
+    /**
+     * Copy the src/AppBundle directory shipped with the bundle to the root folder of the contao installation.
+     */
+    protected function createAppBundle()
+    {
+        $filesystem = new Filesystem();
+        $filesystem->mirror(__DIR__ . '/../../data/src', TL_ROOT . '/src');
+
+        // Add autoload configuration for AppBundle to the root composer.json.
+        $composerFile = file_get_contents(TL_ROOT . '/composer.json');
+        $composerContent = json_decode($composerFile, true);
+        if (!isset($composerContent['autoload']['psr-4']['AppBundle\\\\'])) {
+            $composerContent['autoload']['psr-4']['AppBundle\\'] = 'src/AppBundle/';
+            $composerContent = json_encode($composerContent, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+            file_put_contents(TL_ROOT . '/composer.json', $composerContent);
+        }
+
+        $this->installedModules[] = array
+        (
+            'title' => 'AppBundle',
+            'description' => 'Ein Starter-AppBundle wurde nach src/AppBundle kopiert. In der root composer.json wurde das AppBundle als autoload Konfiguration eingetragen. <br><br>
+<strong>Folgende Befehle müssen auf der Konsole ausgeführt werden:</strong> <br>
+<em class="tl_red">composer dump-autoload</em> <br>
+<em class="tl_red">vendor/bin/contao-console assets:install --relative --symlink</em>',
+            'link' => '',
+        );
     }
 
     /**

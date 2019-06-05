@@ -16,3 +16,11 @@ $GLOBALS['BE_MOD']['system']['contaostarter'] = array
  * Hooks
  */
 $GLOBALS['TL_HOOKS']['loadFormField'][] = array(LoadFormField::class, 'addWidgetNames');
+
+
+/**
+ * Front end assets
+ */
+if (TL_MODE === 'FE') {
+    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaostarter/vendor/object-fit-images/ofi.min.js';
+}
