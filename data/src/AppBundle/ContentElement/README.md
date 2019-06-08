@@ -4,7 +4,7 @@ PHP-Klassen in diesem Ordner definieren neue Content-Elemente.
 
 ## Namenskonventionen
 
-Die PHP-Klassen werden ohne vorangestelltest "Content" angelegt (abweichend vom core-bundle).  
+Die PHP-Klassen werden ohne vorangestelltes "Content" angelegt (abweichend vom core-bundle).  
 Beispiel: `ImageZoon.php` anstelle von `ContentImageZoom.php`.  
 Inkl. Namespace: `AppBundle\ContentElement\Card.php`
 
