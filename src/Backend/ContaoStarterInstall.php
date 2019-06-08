@@ -4,6 +4,7 @@ namespace Slashworks\ContaoStarterBundle\Backend;
 
 use Contao\BackendModule;
 use Contao\Config;
+use Contao\CoreBundle\Util\SymlinkUtil;
 use Contao\DataContainer;
 use Contao\Dbafs;
 use Contao\Email;
@@ -271,6 +272,9 @@ class ContaoStarterInstall extends BackendModule
 
             $filePath = $this->themeFolder->path . '/' . $file->getRelativePathname();
             Dbafs::addResource($filePath);
+            
+            // Generate symlink
+            SymlinkUtil::symlink($filePath, $webdir . '/' . $filePath, TL_ROOT);
         }
     }
 
