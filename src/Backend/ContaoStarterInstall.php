@@ -272,10 +272,11 @@ class ContaoStarterInstall extends BackendModule
 
             $filePath = $this->themeFolder->path . '/' . $file->getRelativePathname();
             Dbafs::addResource($filePath);
-            
-            // Generate symlink
-            SymlinkUtil::symlink($filePath, $webdir . '/' . $filePath, TL_ROOT);
         }
+
+        // Generate symlink
+        $webdir = StringUtil::stripRootDir(System::getContainer()->getParameter('contao.web_dir'));
+        SymlinkUtil::symlink(TL_ROOT . '/files/themes', $webdir . '/files/themes', TL_ROOT);
     }
 
     /**
