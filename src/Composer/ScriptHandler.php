@@ -33,10 +33,12 @@ class ScriptHandler
     public static function addAppBundleDirectory()
     {
         $filesystem = new Filesystem();
-        $source = getcwd() . '/vendor/slashworks/contao-starter-bundle/data/src';
-        $target = getcwd() . '/src';
+        if (!$filesystem->exists(getcwd() . '/src')) {
+            $source = getcwd() . '/vendor/slashworks/contao-starter-bundle/data/src';
+            $target = getcwd() . '/src';
 
-        $filesystem->mirror($source, $target);
+            $filesystem->mirror($source, $target);
+        }
     }
 
 }
