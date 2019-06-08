@@ -18,6 +18,7 @@ use Contao\Message;
 use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
+use Contao\TextField;
 use Contao\ThemeModel;
 use Contao\UserModel;
 use Slashworks\ContaoSimpleSvgIconsBundle\SimpleSvgIcons;
@@ -427,18 +428,20 @@ class ContaoStarterInstall extends BackendModule
      */
     protected function createUsers()
     {
-        $this->createUser('smelz', 'Stefan Melz', 'stefan@slash-works.de');
-        $this->createUser('sschwarz', 'Simon Schwarz', 'simon@slash-works.de');
-        $this->createUser('sgruna', 'Stefan Gruna', 'stefang@slash-works.de');
-
-        if (!$this->debug) {
-            $this->sendEmailWithUserData();
+        if (Input::post('user_1_name') && Input::post('user_1_email')) {
+            $this->createUser(Input::post('user_1_username'), Input::post('user_1_name'), Input::post('user_1_email'));
+        }
+        if (Input::post('user_2_name') && Input::post('user_2_email')) {
+            $this->createUser(Input::post('user_2_username'), Input::post('user_2_name'), Input::post('user_2_email'));
+        }
+        if (Input::post('user_3_name') && Input::post('user_3_email')) {
+            $this->createUser(Input::post('user_3_username'), Input::post('user_3_name'), Input::post('user_3_email'));
         }
 
         $this->installedModules[] = array
         (
             'title' => 'Backend-User',
-            'description' => 'Es wurden Backenduser angelegt. Die Zugangsdaten wurden per E-Mail an "hallo@slash-works.de" gesendet.',
+            'description' => 'Es wurden Backenduser angelegt.',
             'link' => 'https://www.google.com',
         );
     }
@@ -478,29 +481,6 @@ class ContaoStarterInstall extends BackendModule
             'username' => $username,
             'password' => $password
         );
-    }
-
-    /**
-     * Send an email containing user data of the generated backend users.
-     */
-    protected function sendEmailWithUserData()
-    {
-        $mail = new Email();
-        $mail->subject = 'Benutzerdaten für ' . $this->themeNameAlias;
-        $mail->from = 'hallo@slash-works.de';
-
-        $bodyTemplate = new FrontendTemplate('partial_user_data_mail');
-        $bodyTemplate->website = Environment::get('host');
-        $bodyTemplate->users = $this->userData;
-
-        $template = new FrontendTemplate('mail_default');
-        $template->title = 'Benutzerdaten für ' . $this->themeNameAlias;
-        $template->css = '';
-        $template->body = $bodyTemplate->parse();
-
-        $mail->html = $template->parse();
-
-        $mail->sendTo('hallo@slash-works.de');
     }
 
     /**

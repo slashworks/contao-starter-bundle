@@ -13,9 +13,7 @@
 
     <?php if ($this->userData): ?>
         <div class="tl_box">
-            <div class="widget long">
-                <?php echo $this->userData; ?>
-            </div>
+            <?php echo $this->userData; ?>
         </div>
     <?php endif; ?>
 
@@ -33,12 +31,89 @@
                 <input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formSubmit; ?>">
                 <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
                 <fieldset class="tl_tbox nolegend">
-                    <div class="w50">
+                    <div class="">
                         <h3>
-                            <label for="theme_name">Theme-Name</label>
+                            <label for="theme_name">
+                                Theme-Name
+                                <span class="mandatory">*</span>
+                            </label>
                         </h3>
-                        <input type="text" name="theme_name" id="theme_name" class="tl_text">
+                        <input type="text" name="theme_name" id="theme_name" class="tl_text" required>
                         <p class="tl_help tl_tip"><?php echo $this->themeNameHelp; ?></p>
+                    </div>
+                </fieldset>
+
+                <fieldset id="pal_user_legend" class="tl_box">
+                    <legend>Backend User</legend>
+                    <div class="widget">
+                        <h3>
+                            <label for="user_1_name">Backend User 1 Name</label>
+                            <input type="text" name="user_1_name" id="user_1_name" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie den Namen für den Backend Nutzer 1 ein.</p>
+                        </h3>
+                    </div>
+                    <div class="widget">
+                        <h3>
+                            <label for="user_1_username">Backend User 1 Benutzername</label>
+                            <input type="text" name="user_1_username" id="user_1_username" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie den Benutzernamen für den Backend Nutzer 1 ein.</p>
+                        </h3>
+                    </div>
+                    <div class="widget">
+                        <h3>
+                            <label for="user_1_email">Backend User 1 E-Mail-Adresse</label>
+                            <input type="text" name="user_1_email" id="user_1_email" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie die E-Mail-Adresse für den Backend Nutzer 1 ein.</p>
+                        </h3>
+                    </div>
+
+                    <hr>
+
+                    <div class="widget">
+                        <h3>
+                            <label for="user_2_name">Backend User 2 Name</label>
+                            <input type="text" name="user_2_name" id="user_2_name" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie den Namen für den Backend Nutzer 2 ein.</p>
+                        </h3>
+                    </div>
+                    <div class="widget">
+                        <h3>
+                            <label for="user_2_username">Backend User 2 Benutzername</label>
+                            <input type="text" name="user_2_username" id="user_2_username" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie den Benutzernamen für den Backend Nutzer 2 ein.</p>
+                        </h3>
+                    </div>
+                    <div class="widget">
+                        <h3>
+                            <label for="user_2_email">Backend User 2 E-Mail-Adresse</label>
+                            <input type="text" name="user_2_email" id="user_2_email" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie die E-Mail-Adresse für den Backend Nutzer 2 ein.</p>
+                        </h3>
+                    </div>
+
+
+                    <hr>
+
+                    <div class="widget">
+                        <h3>
+                            <label for="user_3_name">Backend User 3 Name</label>
+                            <input type="text" name="user_3_name" id="user_3_name" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie den Namen für den Backend Nutzer 3 ein.</p>
+                        </h3>
+                    </div>
+                    <div class="widget">
+                        <h3>
+                            <label for="user_3_username">Backend User 3 Benutzername</label>
+                            <input type="text" name="user_3_username" id="user_3_username" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie den Benutzernamen für den Backend Nutzer 3 ein.</p>
+                        </h3>
+                    </div>
+                    <div class="widget">
+                        <h3>
+                            <label for="user_3_email">Backend User 3 E-Mail-Adresse</label>
+                            <input type="text" name="user_3_email" id="user_3_email" class="tl_text">
+                            <p class="tl_help tl_tip">Geben Sie die E-Mail-Adresse für den Backend Nutzer 3 ein.</p>
+                        </h3>
                     </div>
                 </fieldset>
             </div>
