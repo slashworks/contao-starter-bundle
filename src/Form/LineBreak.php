@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form;
+namespace Slashworks\ContaoStarterBundle\Form;
 
 use Contao\Widget;
 

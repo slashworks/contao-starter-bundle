@@ -74,6 +74,10 @@ class ContaoStarterInstall extends BackendModule
     {
         $this->import('BackendUser', 'User');
 
+        if (Environment::get('httpHost') === 'contao-development.swdev') {
+            $this->debug = true;
+        }
+
         parent::__construct($dc);
     }
 
@@ -255,10 +259,6 @@ class ContaoStarterInstall extends BackendModule
     protected function generateTemplate()
     {
         $templateFolder = new Folder('templates/' . $this->themeNameAlias);
-
-        // Copy themplates
-        $filesystem = new Filesystem();
-        $filesystem->mirror(__DIR__ . '/../../data/templates', TL_ROOT . '/templates/' . $this->themeNameAlias);
     }
 
     /**

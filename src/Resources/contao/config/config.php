@@ -1,6 +1,7 @@
 <?php
 
 use Slashworks\ContaoStarterBundle\Backend\ContaoStarterInstall;
+use Slashworks\ContaoStarterBundle\Form\LineBreak;
 use Slashworks\ContaoStarterBundle\Hook\LoadFormField;
 
 /**
@@ -10,6 +11,12 @@ $GLOBALS['BE_MOD']['system']['contaostarter'] = array
 (
     'callback' => ContaoStarterInstall::class,
 );
+
+
+/**
+ * Front end form fields
+ */
+$GLOBALS['TL_FFL']['linebreak'] = LineBreak::class;
 
 
 /**
