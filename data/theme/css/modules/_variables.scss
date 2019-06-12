@@ -33,6 +33,18 @@ $border-radius: 0;
    Helper
 ========================================================================== */
 
+/**
+ * Provide base animation mixin for equal animations.
+ *
+ * Usage:
+ * .element-with-default-animation { @include animation(); }
+ * .element-with-custom-animation  { @include animation(background, 0.5s);
+ *
+ */
+@mixin animation($property: all, $duration: .1s, $easing: ease-in-out) {
+    transition: $property $duration $easing;
+}
+
 @mixin font-smoothing($value: antialiased) {
     @if $value == antialiased {
         -webkit-font-smoothing: antialiased;
