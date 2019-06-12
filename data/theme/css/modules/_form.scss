@@ -1,0 +1,321 @@
+
+/* Form widgets
+========================================================================== */
+
+.widget {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+
+    > * {
+        width: 100%;
+    }
+
+    p.error {
+        color: #FF0000; // TODO: Use error color variable of theme.
+        font-size: .875em;
+        margin: $grid-gutter/4 0 0;
+        order: 10; // Puts the error message after all other widget children.
+    }
+
+}
+
+
+/* Label
+========================================================================== */
+
+label {
+    display: block;
+    font-family: inherit;
+    font-size: 1em;
+    margin-bottom: $grid-gutter/4;
+}
+
+
+/* Text inputs
+========================================================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea {
+    background: #FFFFFF; // TODO: Use theme color variable.
+    border: 1px solid #AAAAAA; // TODO: Use theme color variable.
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1;
+    padding: $grid-gutter/4;
+    width: 100%;
+
+    &:hover {
+        // TODO: Include :hover styles.
+    }
+
+    &:focus {
+        // TODO: Include :focus styles.
+    }
+
+}
+
+textarea {
+    line-height: inherit;
+    resize: vertical;
+}
+
+
+/* File upload
+========================================================================== */
+
+input[type="file"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 0;
+    font-size: 1em;
+    height: 0;
+    position: absolute; /* Remove from element flow. */
+    width: 0;
+}
+
+.widget-upload {
+
+    .label {
+        background: #FFFFFF; // TODO: Use theme color variable.
+        border: 1px solid #888888; // TODO: Use theme color variable.
+        box-sizing: border-box;
+        color: #888888; // TODO: Use theme color variable.
+        cursor: pointer;
+        overflow: hidden;
+        padding: $grid-gutter/4 42px $grid-gutter/4 $grid-gutter/4; // TODO: padding-right depends on the icon width.
+        position: relative;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .icon-upload {
+        fill: #AAAAAA; // TODO: Use theme color variable.
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+    }
+
+    label:hover .icon-upload {
+        fill: #888888; // TODO: Use theme color variable.
+    }
+
+}
+
+
+/* Select, Radio, Checkbox
+========================================================================== */
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+legend {
+    display: block;
+    font-size: inherit;
+    margin: 0 0 $grid-gutter/4;
+    padding: 0;
+}
+
+input[type="radio"],
+input[type="checkbox"],
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 0;
+    font-size: 1em;
+    height: 0;
+    position: absolute; /* Remove from element flow. */
+    width: 0;
+}
+
+
+/* Select
+========================================================================== */
+
+select {
+    background-color: transparent;
+    box-sizing: border-box;
+    border: 1px solid #AAAAAA; // TODO: Change color.
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    height: auto;
+    margin: 0;
+    padding: $grid-gutter/4 42px $grid-gutter/4 $grid-gutter/4; // TODO: padding-right depends on icon width.
+    position: relative;
+    width: 100%;
+
+    &:hover {
+        // TODO: Include :hover styles.
+    }
+
+    &:focus {
+        // TODO: Include :focus styles.
+    }
+
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.ie select {
+    background-image: none;
+}
+
+.select-wrapper {
+    @include animation(all, $animation-duration);
+
+    background: #FFFFFF; // TODO: Change color.
+    border-radius: $border-radius;
+    box-sizing: border-box;
+    position: relative;
+
+    &:hover {
+        // TODO: Include :hover styles.
+    }
+
+    &:focus {
+        // TODO: Include :focus styles.
+    }
+
+}
+
+.select-icon {
+    line-height: 1;
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 1;
+
+    svg {
+        height: 39px; // TODO: height is a "magical number" (should be avoided in most cases) which needs adjustment depending on the select-wrapper heights.
+        width: 20px;
+    }
+
+}
+
+
+/* Radio, Checkbox
+========================================================================== */
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    padding-left: $grid-gutter; // TODO: Probably needs fine tuning for the gap between icon and text.
+    position: relative;
+}
+
+input[type="radio"] + label .radio-label-icon,
+input[type="checkbox"] + label .checkbox-label-icon {
+    @include animation();
+    background-color: #FFFFFF; // TODO: Use theme color variable.
+    border: 2px solid #AAAAAA; // TODO: Use theme color variable.
+    border-radius: $border-radius;
+    height: 14px; // TODO: Probably needs fine tuning.
+    left: 0;
+    margin-top: 2px; // TODO: Probably needs fine tuning.
+    position: absolute;
+    width: 14px; // TODO: Probably needs fine tuning.
+
+    svg {
+        @include animation();
+
+        fill: #FFFFFF; // TODO: Use theme color variable.
+        height: 10px; // TODO: Probably needs fine tuning.
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 2px;
+        width: 14px;
+    }
+
+}
+
+input[type="radio"]:hover + label .radio-label-icon,
+input[type="radio"]:focus + label .radio-label-icon,
+input[type="checkbox"]:hover + label .checkbox-label-icon,
+input[type="checkbox"]:focus + label .checkbox-label-icon {
+    border-color: #888888; // TODO: Use theme color variable.
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0,.1), 0 2px 4px 0 rgba(0, 0, 0, .25);
+}
+
+input[type="radio"]:checked + label .radio-label-icon,
+input[type="checkbox"]:checked + label .checkbox-label-icon {
+    background-color: #888888; // TODO: Use theme color variable.
+    border-color: #888888; // TODO: Use theme color variable.
+
+    svg {
+        opacity: 1;
+    }
+
+}
+
+input[type="radio"] + label .radio-label-icon,
+input[type="radio"]:checked + label .radio-label-icon {
+    border-radius: 50%;
+}
+
+.radio_container.error .radio-label-icon,
+.checkbox_container.error .checkbox-label-icon {
+    border-color: red; // TODO: Use theme color variable.
+}
+
+.checkbox_container,
+.radio_container {
+
+    > span {
+        display: block;
+    }
+
+}
+
+
+/* Submit buttons
+========================================================================== */
+
+.widget-submit {
+    margin-top: $grid-gutter/2;
+}
+
+button[type="submit"] {
+    @extend .button;
+
+    width: auto;
+}
+
+.formbody {
+    @extend .grid;
+}
+
+.widget {
+    margin-bottom: $grid-gutter/2;
+}
+
+
+/* Line break element
+========================================================================== */
+
+.form-linebreak {
+    background: none;
+    border: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}

@@ -36,7 +36,7 @@ class ContaoStarterInstall extends BackendModule
     protected $installationDone = false;
 
     /** @var bool */
-    protected $debug = false;
+    protected $debug = true;
 
     /** @var Folder */
     protected $themeFolder;
@@ -255,6 +255,10 @@ class ContaoStarterInstall extends BackendModule
     protected function generateTemplate()
     {
         $templateFolder = new Folder('templates/' . $this->themeNameAlias);
+
+        // Copy themplates
+        $filesystem = new Filesystem();
+        $filesystem->mirror(__DIR__ . '/../../data/templates', TL_ROOT . '/templates/' . $this->themeNameAlias);
     }
 
     /**
@@ -428,22 +432,29 @@ class ContaoStarterInstall extends BackendModule
      */
     protected function createUsers()
     {
+        $hasUsers = false;
+
         if (Input::post('user_1_name') && Input::post('user_1_email')) {
+            $hasUsers = true;
             $this->createUser(Input::post('user_1_username'), Input::post('user_1_name'), Input::post('user_1_email'));
         }
         if (Input::post('user_2_name') && Input::post('user_2_email')) {
+            $hasUsers = true;
             $this->createUser(Input::post('user_2_username'), Input::post('user_2_name'), Input::post('user_2_email'));
         }
         if (Input::post('user_3_name') && Input::post('user_3_email')) {
+            $hasUsers = true;
             $this->createUser(Input::post('user_3_username'), Input::post('user_3_name'), Input::post('user_3_email'));
         }
 
-        $this->installedModules[] = array
-        (
-            'title' => 'Backend-User',
-            'description' => 'Es wurden Backenduser angelegt.',
-            'link' => 'https://www.google.com',
-        );
+        if ($hasUsers) {
+            $this->installedModules[] = array
+            (
+                'title' => 'Backend-User',
+                'description' => 'Es wurden Backenduser angelegt.',
+                'link' => 'https://www.google.com',
+            );
+        }
     }
 
     /**

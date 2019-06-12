@@ -1,0 +1,101 @@
+
+/* The width is an arbitrary number, which can be changed depending on the text content. 960px is a good fit for standard text. */
+$cookiebar-width: 960px;
+
+.cookiebar {
+    align-items: center;
+    background: #FFFFFF; // TODO: Replace with a color defined by the theme..
+    box-shadow: 0 -8px 16px 0 rgba(0, 0, 0, .04);
+    box-sizing: border-box;
+    color: inherit;
+    display: flex;
+    font-size: 1em;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    left: 50%;
+    margin-left: -$cookiebar-width/2;
+    padding: $grid-gutter/2;
+    right: auto;
+    text-align: left;
+    width: $cookiebar-width;
+}
+
+.cookiebar--position-bottom {
+    bottom: $grid-gutter;
+}
+
+.cookiebar__text {
+    margin-right: $grid-gutter/2;
+}
+
+.cookiebar__message {
+    margin-right: 0;
+}
+
+/*
+    TODO: Define color and text-decoration for hyperlink if necessary.
+          Also define separate :hover and :active styles if necessary.
+          Ideally these styles should have been defined by the base theme already.
+ */
+.cookiebar__link {
+    color: inherit;
+    transition: color $animation-duration ease-in-out;
+
+    &:hover {
+
+    }
+
+    &:active {
+
+    }
+
+}
+
+.cookiebar__button {
+    @extend .button;
+
+    margin-left: $grid-gutter/2;
+}
+
+
+@media all and (max-width: $cookiebar-width + $grid-gutter*2) {
+
+    .cookiebar {
+        margin-left: 0;
+        left: $grid-gutter;
+        right: $grid-gutter;
+        width: auto;
+    }
+
+}
+
+
+@media all and (max-width: 650px) {
+
+    .cookiebar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cookiebar__text {
+        margin-bottom: $grid-gutter/2;
+        margin-right: 0;
+    }
+
+    .cookiebar__button {
+        margin-left: 0;
+    }
+
+}
+
+
+@media all and (max-width: 480px) {
+
+    .cookiebar {
+        bottom: 0;
+        font-size: .75em;
+        left: 0;
+        right: 0;
+    }
+
+}

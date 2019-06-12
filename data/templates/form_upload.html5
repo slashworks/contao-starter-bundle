@@ -1,0 +1,61 @@
+<?php $this->extend('form_row'); ?>
+
+<?php $this->block('label'); ?>
+<?php if ($this->label): ?>
+    <label for="ctrl_<?= $this->id ?>"<?php if ($this->class): ?> class="<?= $this->class ?>"<?php endif; ?>>
+        <?php if ($this->mandatory): ?>
+            <span class="invisible"><?= $this->mandatoryField ?> </span><?= $this->label ?><span class="mandatory">*</span>
+        <?php else: ?>
+            <?= $this->label ?>
+        <?php endif; ?>
+    </label>
+<?php endif; ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('field'); ?>
+    <?php if ($this->hasErrors()): ?>
+        <p class="error"><?= $this->getErrorAsString() ?></p>
+    <?php endif; ?>
+
+    <input type="file" name="<?= $this->name ?>" id="ctrl_<?= $this->id ?>" class="upload<?php if ($this->class) echo ' ' . $this->class; ?>"<?= $this->getAttributes() ?>>
+
+    <?php if ($this->label): ?>
+        <label for="ctrl_<?= $this->id ?>" class="label<?php if ($this->class): ?> <?= $this->class ?><?php endif; ?>">
+            <?php if ($this->mandatory): ?>
+                <span class="invisible"><?= $this->mandatoryField ?> </span><span class="label-text"><?= $this->label ?></span><span class="mandatory">*</span>
+            <?php else: ?>
+                <span class="label-text"><?= $this->label ?></span>
+            <?php endif; ?>
+
+            <span class="label-icon">
+                {{svg::icon-upload}}
+            </span>
+        </label>
+    <?php endif; ?>
+
+    <script>
+      !(function() {
+        var fileField = document.getElementById('ctrl_<?php echo $this->id; ?>');
+        var fileLabel = document.querySelector('.label[for="ctrl_<?php echo $this->id; ?>"]');
+        var fileLabelText = fileLabel.querySelector('.label-text');
+
+        var fileLabelValue = fileLabelText.innerHTML;
+
+        fileField.addEventListener('change', function(e) {
+          var fileName = '';
+
+          if (this.files && this.files.length > 1) {
+            fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+          } else {
+            fileName = e.target.value.split('\\').pop();
+          }
+
+          if (fileName) {
+            fileLabelText.innerHTML = fileName;
+          } else {
+            fileLabelText.innerHTML = fileLabelValue;
+          }
+        });
+      })();
+    </script>
+<?php $this->endblock(); ?>
