@@ -13,7 +13,8 @@
         "php": "^5.6 || ^7.0",
         "contao/core-bundle": "4.4.*",
         "symfony/framework-bundle": "^3.3",
-        "slashworks/contao-simple-svg-icons-bundle": "^1.0"
+        "slashworks/contao-simple-svg-icons-bundle": "^1.0",
+        "slashworks/contao-trackingmanager-bundle": "^1.x"
     },
     "conflict": {
         "contao/core": "*",
