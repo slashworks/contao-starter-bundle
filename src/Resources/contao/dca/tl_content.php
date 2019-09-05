@@ -12,7 +12,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['customTpl']['options_callback'] = ar
 /**
  * Flickity start and stop elements
  */
-$GLOBALS['TL_DCA']['tl_content']['palettes']['flickitystart'] = '{type_legend},type;{flickity_legend},flickityConfiguration,exampleFlickityConfiguration;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests;{invisible_legend:hide},invisible,start,stop';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['flickitystart'] = '{type_legend},type;{flickity_legend},flickityConfiguration,exampleFlickityConfiguration;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['flickitystop'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests;{invisible_legend:hide},invisible,start,stop';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['flickityConfiguration'] = array
