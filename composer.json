@@ -14,7 +14,7 @@
         "contao/core-bundle": "4.4.*",
         "symfony/framework-bundle": "^3.3",
         "slashworks/contao-simple-svg-icons-bundle": "^1.0",
-        "slashworks/contao-trackingmanager-bundle": "^1.0.4"
+        "slashworks/contao-trackingmanager-bundle": "^1.1.0"
     },
     "conflict": {
         "contao/core": "*",
