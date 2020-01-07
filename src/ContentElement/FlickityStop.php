@@ -34,6 +34,6 @@ class FlickityStop extends \ContentElement
 		}
 
         $GLOBALS['TL_CSS'][] = 'bundles/contaostarter/vendor/flickity/flickity.min.css';
-        $GLOBALS['TL_BODY'][] = '<script src="bundles/contaostarter/vendor/flickity/flickity.pkgd.min.js">';
+        $GLOBALS['TL_BODY'][] = '<script src="bundles/contaostarter/vendor/flickity/flickity.pkgd.min.js"></script>';
 	}
 }
