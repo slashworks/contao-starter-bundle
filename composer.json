@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.0 || ^8.0",
-        "contao/core-bundle": "^4.4",
+        "contao/core-bundle": "^4.9 || ^4.13"
         "slashworks/contao-simple-svg-icons-bundle": "^1.0",
         "slashworks/contao-trackingmanager-bundle": "^4.0"
     },
